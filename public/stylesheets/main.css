@@ -1,0 +1,14 @@
+/* Google Maps */
+#map {
+	height: 400px;
+	width: 100%;
+}
+
+body,
+wrapper {
+	min-height: 100vh;
+}
+
+.checked {
+	color: #ff9900;
+}

@@ -1,0 +1,80 @@
+<% include ../partials/header %>
+
+<script type="text/javascript">
+    function onSelectChange() {
+        var selectedValue = document.getElementById("profilePictureType").value;    
+        var upload = selectedValue == "1";
+    
+        document.getElementById("fileBrowse").disabled = !upload;
+        document.getElementById("enterUrl").disabled = upload;     
+    }
+</script>
+
+
+<div class="text-center container">
+    <div class=" justify-content-center row">
+        <form class="w-50 mt-3" action="/campgrounds" method="post" enctype="multipart/form-data">
+                
+                <h1 class="h3 mb-3 font-weight-bold">Create New Campground</h1>
+                <div class="form-group row">
+                    <input type="text"  class="form-control" name="name" placeholder="Camp Name" required autofocus>
+                </div>
+
+            
+                <!-- <div class="form-group row">
+                    <input class="form-control col-8 mr-1" type="text" name="image" placeholder="Add Image Url"> or 
+                    <label class="btn btn-primary ml-1 col">
+                        <i class="fa fa-image"></i> Upload Image<input type="file" id="image" accept="image/*" style="display: none;"  name="image">
+                    </label>
+                </div> -->
+                <div class="form-group row">
+                <select class="form-control custom-select" id="profilePictureType" onchange="onSelectChange()">
+                    <option value="1">Upload an Image</option>
+                    <option value="2">Load from URL</option>
+                </select>
+                
+                    <div class="form-control custom-file">
+                        <input type="file" name="image" accept="image/*" class="custom-file-input" id="fileBrowse" onchange="$(this).next().after().text($(this).val().split('\\').slice(-1)[0])">
+                        <label class="text-left custom-file-label" for="fileBrowse">Choose Image</label>
+                    </div>
+                
+                <input class="form-control" type="url" id="enterUrl" name ="image" placeholder="Enter in a URL." disabled="disabled">
+            </div>
+
+
+
+                <div class="form-group row">
+                    <input class="form-control" type="text" name="location" id="location" placeholder="Location">
+                </div>
+                <div class="form-group row">
+                    <textarea rows="3" class="form-control" name="description" placeholder="Description" required></textarea>
+                </div>
+                <div class="form-group row">
+                        <input type="number"  class="form-control" name="price" placeholder="Price Per Night" step="0.01">
+                </div>
+                <div class="form-group row">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                </div>
+        </form>
+        
+    </div>
+    <a href="/campgrounds">Go Back</a>
+</div>
+
+<!-- <form>
+        Choose a Profile Picture:<br>
+        <select id="profilePictureType" onchange="onSelectChange()">
+    
+            <option value="1">Upload an Image</option>
+            <option value="2">Load from URL</option>
+    
+        </select><br>
+    
+        <input type="file" id="fileBrowse" name="image" accept="image/*"><br>
+        <input type="url" id="enterUrl" name ="image" placeholder="Enter in a URL." disabled="disabled">
+    
+</form> -->
+
+
+
+<% include ../partials/footer %>

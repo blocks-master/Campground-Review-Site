@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://kit.fontawesome.com/b3e46b169d.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>YelpCamp</title>
+    <script>
+      $( document ).ready(function() {
+          bsCustomFileInput.init();
+          console.log( "document loaded" );
+      });
+    </script>
+  </head>
+  <body>
+    <wrapper class="d-flex flex-column h-100">
+   
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">YelpCamp</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/campgrounds">Home</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <% if(!currentUser){ %>
+            <li class="nav-item ">
+              <a class="nav-link active" href="/login">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/register">Sign Up</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item active">
+              <a href="/users/<%= currentUser.id %>" class="nav-link">
+                <%= currentUser.username %>
+                </a>
+            </li>
+            <li class="nav-item active hoverable">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger mt-2" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+        <div class="alert alert-success mt-2" role="alert">
+          <%= success %>
+        </div>
+      <% } %>
+    </div>
+  
+    
+
