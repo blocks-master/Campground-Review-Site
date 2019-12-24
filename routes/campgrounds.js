@@ -6,7 +6,7 @@ var middleware = require("../middleware");
 var NodeGeocoder = require("node-geocoder");
 var multer = require("multer");
 var Review = require("../models/review");
-require("locus");
+
 var storage = multer.diskStorage({
 	filename: function(req, file, callback) {
 		callback(null, Date.now() + file.originalname);
