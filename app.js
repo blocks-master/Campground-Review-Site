@@ -21,7 +21,9 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
-mongoose.connect(process.env.DATABASEURL);
+
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+mongoose.connect(url);
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
